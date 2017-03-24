@@ -1,0 +1,59 @@
+<%= form_for(display) do |f| %>
+  <% if display.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(display.errors.count, "error") %> prohibited this display from being saved:</h2>
+
+      <ul>
+      <% display.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :show_date %>
+    <%= f.number_field :show_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :show_from %>
+    <%= f.number_field :show_from %>
+  </div>
+
+  <div class="field">
+    <%= f.label :show_limit %>
+    <%= f.number_field :show_limit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :columns %>
+    <%= f.number_field :columns %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lines %>
+    <%= f.number_field :lines %>
+  </div>
+
+  <div class="field">
+    <%= f.label :consigne %>
+    <%= f.text_area :consigne %>
+    </p>
+  </div>
+
+  <div class="field">
+    <%= f.label :logo %>
+    <%= f.text_area :logo %>
+    </p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

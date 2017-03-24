@@ -1,0 +1,51 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Chaines</h3>
+  </div>
+  <div class="panel-body">
+
+      <table class='table table-condensed'>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Rendu</th>
+            <th>Mot clé</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @channels.each do |channel| %>
+            <tr>
+              <td><%= channel.name %></td>
+              <td>
+                <ul>
+                  <% @displays.each do |display|%>
+                    <li>
+                    <a href="/display/<%=display.name%>/<%=channel.name%>"><%=display.name%></a>
+                    </li>
+                  <%end%>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <% channel.keywords.each do |keyword| %>
+                    <li><%=keyword.word%></li>
+                  <% end %>
+                </ul>
+              </td>
+              <td><%= link_to 'Détails', channel %></td>
+              <td><%= link_to 'Modifier', edit_channel_path(channel) %></td>
+              <td><%= link_to 'Supprimer', channel, method: :delete, data: { confirm: 'Confirmer la suppression' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <%= link_to 'Nouvelle chaine', new_channel_path %>
+
+
+  </div>
+</div>

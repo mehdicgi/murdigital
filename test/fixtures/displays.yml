@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  show_date: 1
+  show_from: 1
+  show_limit: 1
+  columns: 1
+  lines: 1
+  consigne: MyText
+
+two:
+  name: MyString
+  show_date: 1
+  show_from: 1
+  show_limit: 1
+  columns: 1
+  lines: 1
+  consigne: MyText

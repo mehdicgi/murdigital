@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mur Digital</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><span>Mur Transilien</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                      <%= link_to 'Accueil', Channel %>
+                    </li>
+                    <li>
+                      <%= link_to 'Chaines', Channel%>
+                    </li>
+                    <li>
+                      <%= link_to 'Affichages', Display%>
+                    </li>
+                    <li>
+                      <%= link_to 'Sources', Provider%>
+                    </li>
+                    <li>
+                      <%= link_to 'Paramètres', Property%>
+                    </li>
+                    <li>
+                      <%= link_to 'TweetStream', tweetstream_index_path%>
+                    </li>
+                    <% if user_signed_in? %>
+                      <li>
+                        <%= link_to "Se deconnecter", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                      </li>
+                    <% else %>
+                      <li>
+                        <%= link_to "Se connecter", new_user_session_path, :class => 'navbar-link'  %>
+                      </li>
+                    <% end %>                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+      <div class="container-fluid"> 
+      <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
+

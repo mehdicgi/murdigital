@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @display.name %>
+</p>
+
+<p>
+  <strong>Show date:</strong>
+  <%= @display.show_date %>
+</p>
+
+<p>
+  <strong>Show from:</strong>
+  <%= @display.show_from %>
+</p>
+
+<p>
+  <strong>Show limit:</strong>
+  <%= @display.show_limit %>
+</p>
+
+<p>
+  <strong>Columns:</strong>
+  <%= @display.columns %>
+</p>
+
+<p>
+  <strong>Lines:</strong>
+  <%= @display.lines %>
+</p>
+
+<p>
+  <strong>Consigne:</strong>
+  <%= @display.consigne %>
+</p>
+
+<%= link_to 'Edit', edit_display_path(@display) %> |
+<%= link_to 'Back', displays_path %>

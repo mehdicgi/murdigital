@@ -1,0 +1,59 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Affichages</h3>
+  </div>
+  <div class="panel-body">
+
+      <table class='table table-condensed'>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Rendu</th>
+            <th>Date?</th>
+            <th>Expéditeur</th>
+            <th>Limite d'affichage</th>
+            <th>Colonnes</th>
+            <th>Lignes</th>
+            <th>Consigne</th>
+            <th>logo</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @displays.each do |display| %>
+            <tr>
+              <td><%= display.name %></td>
+              <td>
+                <ul>
+                  <% @channels.each do |channel|%>
+                    <li>
+                    <a href="/display/<%=display.name%>/<%=channel.name%>"><%=channel.name%></a>
+                    </li>
+                  <%end%>
+                </ul>
+              </td>
+              <td><%= display.show_date %></td>
+              <td><%= display.show_from %></td>
+              <td><%= display.show_limit %></td>
+              <td><%= display.columns %></td>
+              <td><%= display.lines %></td>
+              <td><%= display.consigne %></td>
+              <td>
+              <%=display.logo%>
+              <img src="<%=display.logo%>" class="img-responsive" style="heigth:25px">
+              </td>
+              <td><%= link_to 'Modifier', edit_display_path(display) %></td>
+              <td><%= link_to 'Supprimer', display, method: :delete, data: { confirm: 'Confirmer la suppression?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <%= link_to 'Nouvelle écran', new_display_path %>
+
+
+  </div>
+</div>

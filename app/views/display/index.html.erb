@@ -1,0 +1,71 @@
+<!-- CONSIGNE : BEGIN -->
+      <div class="row consigne" id='consigne'>
+        <div class="col-md-2 consigne-logo">
+          <img src="<%=@display.logo%>"  class="img-responsive consigne-logo">
+        </div>
+        <div class="col-md-8">
+          <div class="text-center consigne-text">              
+            <%= simple_format(@display.consigne) %>
+          </div>
+        </div>
+        <diV class="col-md-2">
+          &nbsp;
+        </diV>
+      </div>
+    <!-- CONSIGNE : END -->
+
+    <!-- GRID : BEGIN-->
+    <div class="section">
+      <div class="container-fluid">        
+        <div class="row" id='grid'>
+          <% @messages.each do |message| %>       
+            <%= render partial: 'messages/message', locals: {message: message, display: @display}%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- GRID : END-->
+
+    <!-- FOOTER : BEGIN -->
+    <footer class="footer">
+      <div class='container'>
+        <p class="text-muted">
+          <b>Copyright Innovation DDSI Transilien 2016</b>  
+        </p>
+      </div>
+    </footer>
+    <!-- FOOTER : END -->
+  <script type="text/javascript">
+    $(window).load(function(){
+      jQuery.timeago.settings.strings = {
+         // environ ~= about, it's optional
+         prefixAgo: "",
+         prefixFromNow: "d'ici",
+         seconds: "1 min",
+         minute: "1 min",
+         minutes: "%d mins",
+         hour: "1 hr",
+         hours: "%d hrs",
+         day: "un jour",
+         days: "%d jours",
+         month: "un mois",
+         months: "%d mois",
+         year: "un an",
+         years: "%d ans"
+      };
+      jQuery("time.timeago").timeago();
+
+      $('[id^=message]').each(function (index,value) {
+        resizeDiv($(this).attr('id'));
+      });
+      
+      $('[id^=content]').each(function (index,value) {
+        var complete_id = $(this).attr('id');
+        var id = complete_id.substr(complete_id.indexOf('-') + 1);
+        fitMessage(id);
+      });
+
+      // setInterval(function(){scrollVertical()},15000)
+      
+    });
+  </script> 

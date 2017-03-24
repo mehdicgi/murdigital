@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">TweetStream</h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      Comptes paramétrés : <%=@twitter_accounts.join(' ')%>
+    </p>
+    <p>
+      Etats du process :
+      <%if @process_status== 1%>
+      En marche (<%=@process_id%>)
+      <%= link_to 'Suspendre', tweetstream_stop_path%>
+      <%else%>
+      Eteint <%= link_to 'Démarrer', tweetstream_start_path%>
+      <%end%>
+    </p>
+    <%if @process_status==1%>
+      <p>
+      Comptes en ecoute : <%=@args.join(' ')%>
+      </p>
+    <%end%>
+  </div>
+</div>
+

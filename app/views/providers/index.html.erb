@@ -1,0 +1,51 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Sources</h3>
+  </div>
+  <div class="panel-body">
+
+      <table class='table table-condensed'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Img src</th>
+            <th>Image</th>
+            <th>Couleur</th>
+            <th>Pictogramme</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @providers.each do |provider| %>
+            <tr>
+              <td><%= provider.name %></td>
+              <td><%= provider.img_src %></td>
+              <td>
+                <%unless provider.img_src.eql?''%>
+                  <img src="<%= provider.img_src %>" class="img-responsive img-circle" style="height:100px"/>
+                <%end%>
+              </td>
+              <% if provider.color.eql? ''%>
+                <td></td>
+              <% else %>
+                <td style="background-color: <%=provider.color%>"><%=provider.color%></td>
+              <%end%>
+              <td>
+                <i class="fa fa-2x fa-fw <%=provider.picto%>"><%=provider.picto%></i>
+              </td>
+              <td><%= link_to 'Modifier', edit_provider_path(provider) %></td>
+              <td><%= link_to 'Supprimer', provider, method: :delete, data: { confirm: 'Confirmer la suppression?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+
+      <br>
+
+      <%= link_to 'Créer une source', new_provider_path %>
+
+  </div>
+</div>
+

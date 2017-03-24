@@ -1,0 +1,23 @@
+<!-- MESSAGE : BEGIN-->
+<div id='message-<%=message.id%>' class="text-center card" style="background: <%=message.provider.color%>">
+  <p id='content-<%=message.id%>' class="text-center message" style="font-size:50px;overflow: hidden;">
+    <%=message.content%>
+    <% if message.picture %>
+     <img src="<%=message.picture %>" style="width:75%"/>
+    <% end %>  
+  </p>
+  <p class="text-center bottom-align-text" id='footer-<%=message.id%>'>
+    <span id='author-<%=message.id%>'><%=message.author%></span>
+    &nbsp;&nbsp;
+    <% if message.provider.picto.eql? '' %>
+      <img src="<%=message.provider.img_src%>"  class="img-circle" style="height: 15px;width:25px;">
+    <% else %>
+      <i class="fa fa-fw <%=message.provider.picto%>"></i>
+    <%end%>
+    &nbsp;&nbsp;
+      <span id='date-<%=message.id%>'>
+        <time class="timeago" datetime="<%=message.created_at.strftime("%FT%TZ")%>"></time>
+      </span>
+  </p>  
+</div>
+<!-- MESSAGE : END -->
